@@ -5,5 +5,10 @@ export default defineNuxtConfig({
       title: "Super TicTacToe",
     },
   },
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts"],
+  googleFonts: {
+    families: {
+      Quicksand: [400, 700],
+    },
+  },
 });
