@@ -9,7 +9,7 @@ export default {
       },
       colors: {
         sky: {
-          darker: "#051e2e",
+          darker: "#07263c",
         },
       },
     },
