@@ -1,0 +1,43 @@
+<script setup lang="ts">
+import type { Mark, Turn } from "~/components/AppBoard.vue";
+
+const turn = ref<Turn>("x");
+const moves = ref<Mark[]>();
+</script>
+
+<template>
+  <div class="flex justify-center items-center w-full h-screen p-4 bg-sky-950">
+    <div class="flex flex-col gap-4 mx-auto">
+      <div class="flex justify-between items-center">
+        <div
+          class="flex items-center gap-2 h-8 px-3 text-gray-300 bg-sky-900 shadow-block shadow-sky-darker rounded-lg font-bold uppercase"
+        >
+          <AppX v-if="turn === 'x'" :size="12" />
+          <AppO v-else :size="12" />
+          <span class="text-xs">turn</span>
+        </div>
+        <AppButton variant="neutral" size="small">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 256 256"
+          >
+            <path
+              d="M244,56v48a12,12,0,0,1-12,12H184a12,12,0,1,1,0-24H201.1l-19-17.38c-.13-.12-.26-.24-.38-.37A76,76,0,1,0,127,204h1a75.53,75.53,0,0,0,52.15-20.72,12,12,0,0,1,16.49,17.45A99.45,99.45,0,0,1,128,228h-1.37A100,100,0,1,1,198.51,57.06L220,76.72V56a12,12,0,0,1,24,0Z"
+            ></path>
+          </svg>
+        </AppButton>
+      </div>
+      <div class="w-screen h-screen max-w-80 max-h-80">
+        <AppBoard :turn="turn" v-model="moves" />
+      </div>
+      <div class="flex gap-4">
+        <AppBadge title="x (you)" variant="secondary" block> 10 </AppBadge>
+        <AppBadge title="ties" variant="neutral" block> 32 </AppBadge>
+        <AppBadge title="o (cpu)" block> 8 </AppBadge>
+      </div>
+    </div>
+  </div>
+</template>
