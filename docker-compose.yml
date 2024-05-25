@@ -1,0 +1,17 @@
+services:
+  storage:
+    image: redis:7.2.4-alpine
+    container_name: storage
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - 6379:${NUXT_STORAGE_PORT}
+    volumes:
+      - storage_data:/data
+    command: >
+      redis-server --port "$NUXT_STORAGE_PORT"
+
+volumes:
+  storage_data:
+    driver: local
